@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:07:54 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/08 11:59:41 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/08 12:06:41 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -100,7 +100,7 @@ void	create_and_append(t_list **list, int fd)
 	{
 		buffer = malloc(BUFFER_SIZE + 1);
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (!(buffer) || bytes_read < 0)
+		if (!(buffer) || bytes_read <= 0)
 			return (free(buffer), (void)0);
 		buffer[bytes_read] = '\0';
 		new_node = malloc(sizeof(t_list));
