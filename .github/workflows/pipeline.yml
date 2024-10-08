@@ -135,10 +135,10 @@ jobs:
     - name: Run Francinette
       id: check_phrase
       run: |
-        rm -rf ~/work/42-Prj04-GetNextLine/42-Prj04-GetNextLine_tmp
-        cp -r ~/work/42-Prj04-GetNextLine/42-Prj04-GetNextLine ~/work/42-Prj04-GetNextLine/42-Prj04-GetNextLine_tmp
-        cd ~/work/42-Prj04-GetNextLine/42-Prj04-GetNextLine_tmp
-        rm -rf ~/work/42-Prj04-GetNextLine/42-Prj04-GetNextLine_tmp/.github/
+        rm -rf ~/work/get_next_line/get_next_line_tmp
+        cp -r ~/work/get_next_line/get_next_line ~/work/get_next_line/get_next_line_tmp
+        cd ~/work/get_next_line/get_next_line_tmp
+        rm -rf ~/work/get_next_line/get_next_line_tmp/.github/
         echo "Current directory: $(pwd)"
         ls -la
         echo "Norminette version:"
