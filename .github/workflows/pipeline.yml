@@ -128,6 +128,9 @@ jobs:
         ls -la
         norminette
       shell: /usr/bin/bash -e {0}
+      
+    - name: Set TERM environment variable
+      run: echo "TERM=xterm" >> $GITHUB_ENV
 
     - name: Run Francinette
       id: check_phrase
@@ -135,12 +138,14 @@ jobs:
         rm -rf ~/work/get_next_line/get_next_line_tmp
         cp -r ~/work/get_next_line/get_next_line ~/work/get_next_line/get_next_line_tmp
         cd ~/work/get_next_line/get_next_line_tmp
+        rm -rf ~/work/get_next_line/get_next_line_tmp/.github/
         echo "Current directory: $(pwd)"
         ls -la
         echo "Norminette version:"
         norminette -v || echo "Failed to get Norminette version"
         echo "Ejecutando Francinette:"
-        bash ~/francinette/tester.sh | tee output.log
+        script -e -c "stdbuf -oL ~/francinette/tester.sh | tee francinette_output.log" /dev/null
+        exit
         search_result=$(grep -rnil "All tests passed! Congratulations!" .)
         echo "Search result: $search_result"
         if echo "$search_result" | grep -q "output.log"; then
@@ -149,7 +154,9 @@ jobs:
         else
           echo "FOUND_PHRASE=false" >> $GITHUB_ENV
         fi
-
+        echo "Current directory: $(pwd)"
+        ls -la
+        ls -la ~/francinette/temp/
     - name: Create tarball of Francinette Export Tests
       run: |
         cd ~
