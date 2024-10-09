@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/09 19:14:10 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:16:47 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -34,7 +34,6 @@ char	*get_next_line(int fd)
 		return (free(line), NULL);
 	if (!(list) || !(line))
 		return (free(line), NULL);
-		//return (get_clear_remaining_data(&list), free(line), NULL);
 	get_copy(list, line);
 	get_clear_remaining_data(&list);
 	return (line);
