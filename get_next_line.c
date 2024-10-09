@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/05 23:24:35 by root             ###   ########.fr       */
+/*   Updated: 2024/10/09 19:14:10 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -27,9 +27,14 @@ char	*get_next_line(int fd)
 	if (fd < 0 || read(fd, line, 0) < 0)
 		return (NULL);
 	create_and_append(&list, fd);
-	line = malloc(get_len(list) + 1);
-	if (!(list) || !(line))
+	if (!list)
 		return (NULL);
+	line = malloc(get_len(list) + 1);
+	if (!line)
+		return (free(line), NULL);
+	if (!(list) || !(line))
+		return (free(line), NULL);
+		//return (get_clear_remaining_data(&list), free(line), NULL);
 	get_copy(list, line);
 	get_clear_remaining_data(&list);
 	return (line);
@@ -82,5 +87,18 @@ void	get_clear_remaining_data(t_list **list)
 	replace->next = NULL;
 	get_free_list(list, replace, buffer);
 }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char	*str;
+	int fd = open("file.txt", O_RDONLY);
+	while (str)
+	{
+		str = get_next_line(fd);
+		printf("line: %s\n", str);
+		free(str);
+	}
+}*/
 //comand > 
 //gcc -o get_next_line main.c get_next_line.c get_next_line_utils.c -I./includes
