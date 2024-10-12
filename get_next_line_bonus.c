@@ -6,15 +6,10 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/12 17:13:36 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/12 23:06:20 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line_bonus.h"
-
-void	get_clear_remaining_data(t_list **list);
-void	create_and_append(t_list **list, int fd);
-void	get_free_list(t_list **list, t_list *replace, char *buf);
-int		find_new_line(t_list *list);
 
 char	*get_next_line(int fd)
 {
