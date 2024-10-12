@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 23:07:54 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/12 23:08:21 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/12 23:10:36 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -108,7 +108,7 @@ void	create_and_append(t_list **list, int fd)
 			return ;
 		new_node->data_buffer = buffer;
 		new_node->next = NULL;
-		if (!*list[fd])
+		if (!list[fd])
 			list[fd] = new_node;
 		else
 		{
