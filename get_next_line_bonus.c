@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/08 18:02:48 by root             ###   ########.fr       */
+/*   Updated: 2024/10/12 17:13:36 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line_bonus.h"
@@ -29,7 +29,7 @@ char	*get_next_line(int fd)
 	create_and_append(list, fd);
 	line = malloc(get_len(list[fd]) + 1);
 	if (!(list[fd]) || !(line))
-		return (NULL);
+		return (free(line), NULL);
 	get_copy(list[fd], line);
 	get_clear_remaining_data(&list[fd]);
 	return (line);
