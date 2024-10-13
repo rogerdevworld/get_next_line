@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/12 23:06:20 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/13 17:22:26 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line_bonus.h"
