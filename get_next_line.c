@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/09 19:16:47 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:39:19 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line.h"
@@ -88,6 +88,7 @@ void	get_clear_remaining_data(t_list **list)
 }
 /*
 #include <stdio.h>
+
 int	main(void)
 {
 	char	*str;
