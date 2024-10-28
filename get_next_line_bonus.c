@@ -6,7 +6,7 @@
 /*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 21:11:16 by rmarrero          #+#    #+#             */
-/*   Updated: 2024/10/13 17:22:26 by rmarrero         ###   ########.fr       */
+/*   Updated: 2024/10/28 20:58:15 by rmarrero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "get_next_line_bonus.h"
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	if (BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
 		return (NULL);
-	if (fd < 0 || fd > 4095 || read(fd, line, 0) < 0)
+	if (fd < 0 || fd > 4095)
 		return (NULL);
 	create_and_append(list, fd);
 	line = malloc(get_len(list[fd]) + 1);
