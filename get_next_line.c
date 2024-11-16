@@ -17,9 +17,7 @@ char	*get_next_line(int fd)
 	char			*line;
 
 	line = NULL;
-	if (BUFFER_SIZE <= 0 || BUFFER_SIZE >= INT_MAX)
-		return (NULL);
-	if (fd < 0)
+	if (BUFFER_SIZE < 0 || fd < 0)
 		return (NULL);
 	create_and_append(&list, fd);
 	if (!list)
