@@ -1,36 +1,21 @@
 /* ************************************************************************** */
-/* */
-/* :::      ::::::::   */
-/* get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
-/* +:+ +:+         +:+     */
-/* By: rmarrero <rmarrero@student.42barcelon>     +#+  +:+       +#+        */
-/* +#+#+#+#+#+   +#+           */
-/* Created: 2024/09/27 23:07:54 by rmarrero          #+#    #+#             */
-/* Updated: 2024/10/12 23:10:36 by rmarrero         ###   ########.fr       */
-/* */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmarrero <rmarrero@student.42barcelon      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/27 23:07:54 by rmarrero          #+#    #+#             */
+/*   Updated: 2024/10/08 12:06:41 by rmarrero         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
-
-#include "get_next_line.h"
-
-// Reemplazamos la lógica manual por la de Libft.
-// En lugar de una función, ahora se usarán las funciones de Libft directamente.
-// Si necesitas encontrar el último nodo, usa ft_lstlast.
-
-/*
-t_list	*get_last_node(t_list *list)
-{
-	if (!list)
-		return (NULL);
-	while (list->next)
-		list = list->next;
-	return (list);
-}
-*/
+#include "get_next_line_bonus.h"
 
 int	get_len(t_list *list)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
+	char	*str_content;
 
 	if (!list)
 		return (0);
@@ -38,9 +23,10 @@ int	get_len(t_list *list)
 	while (list)
 	{
 		i = 0;
-		while (list->content[i]) // Usamos list->content en lugar de list->data_buffer
+		str_content = (char *)list->content;
+		while (str_content[i])
 		{
-			if (list->content[i] == '\n')
+			if (str_content[i] == '\n')
 				return (++len);
 			++i;
 			++len;
@@ -52,8 +38,9 @@ int	get_len(t_list *list)
 
 void	get_copy(t_list *list, char *line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*str_content;
 
 	if (!list)
 		return ;
@@ -61,15 +48,16 @@ void	get_copy(t_list *list, char *line)
 	while (list)
 	{
 		i = 0;
-		while (list->content[i]) // Usamos list->content en lugar de list->data_buffer
+		str_content = (char *)list->content;
+		while (str_content[i])
 		{
-			if (list->content[i] == '\n')
+			if (str_content[i] == '\n')
 			{
 				line[j++] = '\n';
 				line[j] = '\0';
 				return ;
 			}
-			line[j++] = list->content[i++];
+			line[j++] = str_content[i++];
 		}
 		list = list->next;
 	}
@@ -78,16 +66,18 @@ void	get_copy(t_list *list, char *line)
 
 int	find_new_line(t_list *list)
 {
-	int	i;
+	int		i;
+	char	*str_content;
 
 	if (!list)
 		return (0);
 	while (list)
 	{
 		i = 0;
-		while (list->content[i] && i < BUFFER_SIZE) // Usamos list->content
+		str_content = (char *)list->content;
+		while (str_content[i] && i < BUFFER_SIZE)
 		{
-			if (list->content[i] == '\n')
+			if (str_content[i] == '\n')
 				return (1);
 			i++;
 		}
@@ -113,13 +103,6 @@ void	create_and_append(t_list **list, int fd)
 			return ;
 		}
 		buffer[bytes_read] = '\0';
-		// Usamos la función ft_lstnew_bonus para crear un nuevo nodo
-		// y ft_lstadd_back_bonus para agregarlo al final.
-		// Esto simplifica enormemente la lógica de manejo de la lista.
-		ft_lstadd_back_bonus(list, ft_lstnew_bonus(buffer));
+		ft_lstadd_back(list, ft_lstnew(buffer));
 	}
 }
-
-// Nota: No te olvides de incluir los archivos de cabecera de las listas de Libft.
-// Por ejemplo:
-// #include "libft_modules/ft_printf/ft_printf_bonus.h"
